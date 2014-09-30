@@ -12,14 +12,15 @@ router.get('/', function(req, res) {
 });
 
 router.get(/\/_views\/([^.]+)\.jade/, function(req,res) {
-  var filename = path.join(__dirname, '../views', req.params[0], '.jade');
+  var filename = path.join(__dirname, '../views', req.params[0] + '.jade');
 
   fs.readFile(filename, function(err, data) {
     var options = {filename: filename};
     if (err) throw err;
 
+    res.set('Content-Type', 'text/javascript');
     res.send("(function() {" + jade.compileClient(data, options) +
-      "; if (!window.Templates) window.Templates = {};" +
+      "if (!window.Templates) window.Templates = {};" +
       "window.jades['"+req.params[0]+"'] = template;" +
       "})();");
   });

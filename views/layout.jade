@@ -6,11 +6,15 @@ html(lang='ru')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
+    // Bootstrap core JavaScript
+    script(src='/bower/jquery/dist/jquery.min.js')
+    script(src='/bower/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/bower/jade/runtime.js')
+    block scripts
+
     link(href='/bower/bootstrap/dist/css/bootstrap.min.css',rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
-    script(src='/bower/ace/dist/jquery.min.js')
-    script(src='/bower/jade/runtime.js')
 
     title= title
   body
@@ -82,9 +86,5 @@ html(lang='ru')
     .footer
       .container
         p.text-muted Place sticky footer content here.
-
-    // Bootstrap core JavaScript
-    script(src='/bower/jquery/dist/jquery.min.js')
-    script(src='/bower/bootstrap/dist/js/bootstrap.min.js')
 
 
