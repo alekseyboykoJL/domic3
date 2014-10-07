@@ -1,10 +1,9 @@
 var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 var db = require('../models')
-  , authRoutes = require('../routes/auth')
+var authRoutes = require('../routes/auth')
 
-module.exports.name = 'auth';
 module.exports.init = function(app, modules, events) {
   app.use(passport.initialize());
   app.use(passport.session());
@@ -21,7 +20,7 @@ module.exports.init = function(app, modules, events) {
 
   passport.use(new LocalStrategy(
     function(email, password, done) {
-      db.User.find({ email: email }).success(function (user) {
+      db.User.find({ email: email }).success(function(user) {
         if (!user) {
           done(null, false, { message: 'incorrect email' });
         }
@@ -38,9 +37,12 @@ module.exports.init = function(app, modules, events) {
   ));
 
   app.post('/login',
-    passport.authenticate('local', { successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true })
+    passport.authenticate('local',
+      { successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+      }
+    )
   );
 
   app.use('/', authRoutes);

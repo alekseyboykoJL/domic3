@@ -1,14 +1,14 @@
 var express = require('express')
-  , session = require('express-session')
-  , path = require('path')
-  , favicon = require('static-favicon')
-  , logger = require('morgan')
-  , cookieParser = require('cookie-parser')
-  , bodyParser = require('body-parser')
-  , flash = require('connect-flash');
+var session = require('express-session')
+var path = require('path')
+var favicon = require('static-favicon')
+var logger = require('morgan')
+var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
-var domicModules = require('./modules');
+var domicSubsystems = require('./subsystems');
 
 var app = express();
 
@@ -16,20 +16,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser());
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'domic 3 session secret', resave: true, saveUninitialized: true}));
-app.use(flash());
+app.use(favicon())
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
+app.use(cookieParser())
+app.use(require('stylus').middleware(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({secret: 'domic 3 session secret', resave: true, saveUninitialized: true}))
+app.use(flash())
 
 module.exports = function(db) {
   app.use('/', routes);
 
-  domicModules(app, db.events);
+  domicSubsystems(app, db.events);
 
   /// catch 404 and forward to error handler
   app.use(function(req, res, next) {

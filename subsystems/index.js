@@ -7,10 +7,11 @@ module.exports = function(app, events) {
   fs
     .readdirSync(__dirname)
     .filter(function(file) {
-      return (file.indexOf('.') !== 0) && (file !== 'index.js')
+      return (file.indexOf('.') !== 0) && (file !== 'index.js') && (file.substring(file.length - 3) === '.js')
     })
     .forEach(function(file) {
       var module = require(path.join(__dirname, file));
+      module.name = file.substring(0, file.length - 3);
       modules[module.name] = module;
     });
 
@@ -21,7 +22,7 @@ module.exports = function(app, events) {
           initModule(modules, modules[moduleName2]);
         });
       }
-      console.log("module: " + module.name);
+      console.log("subsystem: " + module.name);
       module.init(app, modules, events);
       module.isInitialized = true;
     }

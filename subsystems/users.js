@@ -1,7 +1,6 @@
 var usersRoutes = require('../routes/users')
   , db = require('../models');
 
-module.exports.name = 'users';
 module.exports.require = ['auth'];
 module.exports.init = function(app, modules, events) {
   // dev configuration
