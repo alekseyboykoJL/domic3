@@ -1,5 +1,5 @@
-var fs        = require('fs')
-  , path      = require('path');
+var fs        = require('fs');
+var path      = require('path');
 
 module.exports = function(app, events) {
   var modules   = {};
@@ -31,5 +31,6 @@ module.exports = function(app, events) {
   Object.keys(modules).forEach(function(module) {
     initModule(modules, modules[module]);
   });
+
   return modules;
 };

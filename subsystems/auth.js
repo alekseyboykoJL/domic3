@@ -1,8 +1,8 @@
-var passport = require('passport')
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-var db = require('../models')
-var authRoutes = require('../routes/auth')
+var db = require('../models');
+var authRoutes = require('../routes/auth');
 
 module.exports.init = function(app, modules, events) {
   app.use(passport.initialize());
