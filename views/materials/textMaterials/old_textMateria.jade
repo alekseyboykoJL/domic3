@@ -1,0 +1,27 @@
+//
+   Created by gerasim on 20.10.14.
+
+//
+   Created by gerasim on 20.10.14.
+extends ../../layout
+link(href='/bower/bootstrap/dist/css/bootstrap.min.css',rel='stylesheet')
+block content
+    h4 Создание текстового материала
+    form(role="form",method="post",action="/materials//textmaterial_create")
+        div.radio
+            label html
+                input(type="radio",name="html",id="html_radio", value="html", checked="true")
+        div.radio
+            label markdown
+                input(type="radio",name="html",id="markdown_radio", value="markdown")
+        pre(id="editor")
+        script(src="/bower/ace/build/src/ace.js")
+        script(type='text/javascript').
+            var editor = ace.edit("editor");
+            editor.session.setMode("/bower/ace/lib/mode/html");
+            // enable emmet on the current editor
+            editor.setOption("enableEmmet", true);
+            editor.setAutoScrollEditorIntoView(true);
+            editor.setOption("maxLines", 30);
+            editor.setOption("minLines", 30);
+        script(src="/bower/ace/build/src/ext-emmet.js")

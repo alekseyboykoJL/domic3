@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/logout', function(req, res) {
-  res.send('respond with a resource');
+  req.logout();
+  res.redirect('/login');
 });
 
 router.get('/login', function(req, res) {
