@@ -37,13 +37,15 @@ module.exports.init = function(app, modules, events) {
   ));
 
   app.post('/login',
-    passport.authenticate('local',
-      { successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true
-      }
-    )
+      passport.authenticate('local',
+          { successRedirect: '/',
+            failureRedirect: '/login',
+            failureFlash: true
+          }
+      )
   );
+
+
 
   app.use('/', authRoutes);
 };

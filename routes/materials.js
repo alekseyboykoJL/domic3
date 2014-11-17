@@ -2,7 +2,11 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models');
 
+<<<<<<< HEAD
 router.get('/textMaterial', function(req, res) {
+=======
+router.get('/textmaterial', function(req, res) {
+>>>>>>> origin/master
 
     res.render('materials/textMaterials/textMaterial');
 });
@@ -11,7 +15,11 @@ router.get('/textMaterial', function(req, res) {
 router.get('/textMaterial/:id', function(req, res) {
     db.TextMaterial.findAll({where:{id:req.params.id}, limit: 1 }).success(function(TextMat2) {
         console.log(TextMat2)
+<<<<<<< HEAD
         res.render('materials/textMaterials/textMaterialEditor',{TextMat: TextMat2 }) ;
+=======
+        res.render('materials/textMaterials/textMaterialEditor',{TextMat: TextMat2 }) ;
+>>>>>>> origin/master
    })
 
 
