@@ -20,7 +20,7 @@ router.get(/\/_views\/([^.]+)\.jade/, function(req,res) {
 
     res.set('Content-Type', 'text/javascript');
     res.send("(function() {" + jade.compileClient(data, options) +
-      "if (!window.Templates) window.Templates = {};" +
+      "if (!window.jades) window.jades = {};" +
       "window.jades['"+req.params[0]+"'] = template;" +
       "})();");
   });
