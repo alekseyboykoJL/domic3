@@ -1,10 +1,10 @@
-function remove_gr(groupId){
+function remove_gr(idTestGroup){
     $.ajax({
-        url:"/test/:idTest/edit/testedit/del/"+ groupId,
+        url:"/test/groups/"+ idTestGroup,
         method: 'get'
     }).done(function() {
         $('#select_delgroup').modal('hide')
-        $('#groupsTable tr[groupid='+groupId+']').remove();
+        $('#groupsTable tr[groupid='+idTestGroup+']').remove();
         $(".modal-backdrop").remove();
         });
 }
@@ -16,8 +16,8 @@ TestCreator = {
         $("#setType").val(typequestion);
     },
 
-    preEditStudy: function(groupID) {
-        $("#EditStudy form").attr("action", "/test/:idTest/edit/testedit/addgroup/" + groupID);
+    preEditStudy: function(idTestGroup) {
+        $("#EditStudy form").attr("action", "/test/groups/" + idTestGroup +"/questions");
     }/*,
 
     delQuestions: function(groupID,questionID){
