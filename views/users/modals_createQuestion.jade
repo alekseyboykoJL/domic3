@@ -6,7 +6,7 @@ div(class="modal  fade", id="EditStudy", tabindex="-1", role="dialog", aria-labe
                     span(class="glyphicon glyphicon-remove")
                 h4.modal-title(id="myModalLabel",align="left") Cоздание вопроса
             div.modal-body
-                form(id="EditStudy_form" class="form-horizontal", role="form",method="post", action="/test/groups/:idTestGroup/questions")
+                form(id="EditStudy_form" class="form-horizontal", role="form",method="post", action="/test/:idTest/edit/testedit/addgroup/")
                     div.form-group
                         label(for="inputtext", class="col-sm-2 control-label") Текст вопроса
                         div.col-sm-10
@@ -21,9 +21,9 @@ div(class="modal  fade", id="EditStudy", tabindex="-1", role="dialog", aria-labe
                                     li
                                         a(href="#TestAnswerOpen",data-toggle="tab",onclick="TestCreator.ChoiceType('Open')") TestAnswerOpen
                                     li
-                                        a(href="#TestAnswerOneChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('OneChoice')") TestAnswerOneChoice
+                                        a(href="#TestAnswerOneChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('One')") TestAnswerOneChoice
                                     li
-                                        a(href="#TestAnswerManyChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('ManyChoice')") TestAnswerManyChoice
+                                        a(href="#TestAnswerManyChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('Many')") TestAnswerManyChoice
                     div.tab-content
                         div.tab-pane#TestAnswerOpen
                             div.form-group
