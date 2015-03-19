@@ -1,10 +1,10 @@
-function remove_gr(idTestGroup){
+function remove_gr(groupId){
     $.ajax({
-        url:"/test/groups/"+ idTestGroup,
+        url:"/test/:idTest/edit/testedit/del/"+ groupId,
         method: 'get'
     }).done(function() {
         $('#select_delgroup').modal('hide')
-        $('#groupsTable tr[groupid='+idTestGroup+']').remove();
+        $('#groupsTable tr[groupid='+groupId+']').remove();
         $(".modal-backdrop").remove();
         });
 }
@@ -16,16 +16,10 @@ TestCreator = {
         $("#setType").val(typequestion);
     },
 
-    preEditStudy: function(idTestGroup) {
-        $("#EditStudy form").attr("action", "/test/groups/" + idTestGroup +"/questions");
-    },
+    preEditStudy: function(groupID) {
+        $("#EditStudy form").attr("action", "/test/:idTest/edit/testedit/addgroup/" + groupID);
+    }/*,
 
-     preEditStudy1: function(idTestGroup,idQuestion) {
-         $("#EditStudy1 form").attr("action", "/test/groups/"+idTestGroup+"/questions/"+idQuestion+"/edit");
-
-
-     }
-/*
     delQuestions: function(groupID,questionID){
         $("#groupQuestions tr[testQuestionId='"+questionID+"']").detach();
         $.getJSON('/domic3/TestCreator_delQuestions.json', {groupID: groupID, testQuestionId: questionID}, function (data) {

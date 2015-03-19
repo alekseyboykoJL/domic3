@@ -6,7 +6,7 @@ div(class="modal  fade", id="EditStudy", tabindex="-1", role="dialog", aria-labe
                     span(class="glyphicon glyphicon-remove")
                 h4.modal-title(id="myModalLabel",align="left") Cоздание вопроса
             div.modal-body
-                form(id="EditStudy_form" class="form-horizontal", role="form",method="post", action="/test/groups/:idTestGroup/questions")
+                form(id="EditStudy_form" class="form-horizontal", role="form",method="post", action="/test/:idTest/edit/testedit/addgroup/")
                     div.form-group
                         label(for="inputtext", class="col-sm-2 control-label") Текст вопроса
                         div.col-sm-10
@@ -19,18 +19,18 @@ div(class="modal  fade", id="EditStudy", tabindex="-1", role="dialog", aria-labe
                             div.tabbable.tabs
                                 ul.nav.nav-tabs
                                     li
-                                        a(href="#TestAnswerOpen",data-toggle="tab",onclick="TestCreator.ChoiceType('Open')") Открытый вопрос
+                                        a(href="#TestAnswerOpen",data-toggle="tab",onclick="TestCreator.ChoiceType('Open')") TestAnswerOpen
                                     li
-                                        a(href="#TestAnswerOneChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('OneChoice')") Одновыборный вопрос
+                                        a(href="#TestAnswerOneChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('One')") TestAnswerOneChoice
                                     li
-                                        a(href="#TestAnswerManyChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('ManyChoice')") Многовыборный вопрос
+                                        a(href="#TestAnswerManyChoice",data-toggle="tab",onclick="TestCreator.ChoiceType('Many')") TestAnswerManyChoice
                     div.tab-content
-                        div.tab-pane#TestAnswerOpen(class="active")
+                        div.tab-pane#TestAnswerOpen
                             div.form-group
                                 div.col-sm-12
                                     select(class="form-control", name="inputtypeanswer")
-                                        option Автоматическая проверка
-                                        option Ручная проверка
+                                        option Auto
+                                        option Manual
 
                             textarea(rows="3", type="text", class="form-control", name="inputTestAnswerOpen[]", placeholder="Ответ в виде регулярного выражения...")
 
